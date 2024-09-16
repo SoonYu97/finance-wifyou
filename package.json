@@ -1,0 +1,38 @@
+{
+  "name": "finance-wifyou",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@mantine/charts": "^7.12.2",
+    "@mantine/core": "^7.12.2",
+    "@mantine/form": "^7.12.2",
+    "@mantine/hooks": "^7.12.2",
+    "@mantine/modals": "^7.12.2",
+    "@mantine/notifications": "^7.12.2",
+    "@tabler/icons-react": "^3.16.0",
+    "@tauri-apps/api": ">=2.0.0-rc.0",
+    "@tauri-apps/plugin-shell": ">=2.0.0-rc.0",
+    "@tauri-apps/plugin-sql": "^2.0.0-rc.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": ">=2.0.0-rc.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.2.1",
+    "postcss": "^8.4.47",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1"
+  }
+}
