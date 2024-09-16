@@ -31,6 +31,7 @@ pub fn create_accounts_table() -> Result<()> {
         balance DECIMAL(10, 4) DEFAULT 0,
         note TEXT,
         currency TEXT NOT NULL,
+        count_in_asset BOOL NOT NULL DEFAULT 1,
         FOREIGN KEY (currency) REFERENCES currencies(code) ON DELETE RESTRICT
     );";
 
@@ -51,7 +52,7 @@ pub fn create_accounts_table() -> Result<()> {
     let create_table_sql = "
     CREATE TABLE IF NOT EXISTS invest_accounts (
         account_id INTEGER PRIMARY KEY,
-        average_cost DECIMAL(10, 4),
+        avg_cost DECIMAL(10, 4),
         quantity DECIMAL(10, 4),
         total_cap DECIMAL(10, 4),
         FOREIGN KEY (account_id) REFERENCES accounts(id) ON DELETE CASCADE
