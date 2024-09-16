@@ -18,7 +18,7 @@ export default function Account() {
   useEffect(() => {
     async function fetchAccounts() {
       try {
-        const result = await invoke<Account[]>('get_accounts');
+        const result = await invoke<Account[]>('read_accounts');
         setAccounts(result);
       } catch (error) {
         console.error('Failed to fetch accounts:', error);
