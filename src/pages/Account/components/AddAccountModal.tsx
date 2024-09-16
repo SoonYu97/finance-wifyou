@@ -1,4 +1,4 @@
-import { ActionIcon, Tooltip, TextInput, NumberInput, Button, Flex } from "@mantine/core";
+import { ActionIcon, Tooltip, TextInput, NumberInput, Button, Flex, Select } from "@mantine/core";
 import { useForm } from '@mantine/form';
 import { invoke } from '@tauri-apps/api/core';
 import { modals } from '@mantine/modals';
@@ -19,7 +19,7 @@ export default function AddAccountModal() {
     initialValues: { name: '', account_type: '', balance: 0, currency: '', note: '' },
     validate: {
       name: (value) => (value.length < 3 ? 'Name must have at least 3 letters' : null),
-      account_type: (value) => (value.length < 1 ? 'Type must have at least 1 letters' : null),
+      account_type: (value) => (value.length < 1 ? 'Please select the type' : null),
       currency: (value) => (value.length < 1 ? 'Currency must have at least 1 letters' : null),
     },
   });
@@ -28,7 +28,7 @@ export default function AddAccountModal() {
     if (errors.name) {
       notifications.show({ message: 'Please fill name field', color: 'red' });
     } else if (errors.account_type) {
-      notifications.show({ message: 'Please fill type field', color: 'red' });
+      notifications.show({ message: 'Please select the type', color: 'red' });
     } else if (errors.currency) {
       notifications.show({ message: 'Please fill currency field', color: 'red' });
     }
@@ -38,7 +38,7 @@ export default function AddAccountModal() {
     try {
       const result = await invoke('create_account', {
         name: values.name,
-        account_type: values.account_type,
+        account_type: values.account_type.toLowerCase(),
         balance: values.balance,
         currency: values.currency,
         note: values.note || null
@@ -78,9 +78,11 @@ export default function AddAccountModal() {
             key={form.key('name')}
             {...form.getInputProps('name')}
           />
-          <TextInput
+          <Select
             withAsterisk
-            label="Type" placeholder="Type"
+            label="Account Type"
+            placeholder="Pick account Type"
+            data={['Debit', 'Credit', 'Invest', 'Member']}
             key={form.key('account_type')}
             {...form.getInputProps('account_type')}
           />
