@@ -26,7 +26,7 @@ pub fn create_currencies_table() -> Result<()> {
 }
 
 fn insert_into_currencies_table(conn: &rusqlite::Connection) -> Result<(), rusqlite::Error> {
-    let count: i32 = conn.query_row(
+    let count: i64 = conn.query_row(
         "SELECT COUNT(*) FROM currencies",
         [],
         |row| row.get(0),

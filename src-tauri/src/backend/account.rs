@@ -3,7 +3,7 @@ use rusqlite::{params, Connection, Result};
 
 #[derive(serde::Serialize)]
 pub struct Account {
-    pub id: i32,
+    pub id: i64,
     pub name: String,
     pub account_type: String,
     pub balance: f64,
